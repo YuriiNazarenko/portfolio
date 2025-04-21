@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <main
+        class="w-full max-w-[1170px] mx-auto px-[15px] py-[40px] lg:py-[80px] font-['Inter'] text-base leading-[1.333em]">
+        <article>
+            <h1 class="text-4xl lg:text-5xl font-[600] text-center text-indigo-900 uppercase mb-[24px] lg:mb-[48px]">
+                Calendar</h1>
+            <!-- Main screen -->
+            <div class="lg:flex lg:items-start gap-[30px] mb-[30px] lg:mb-[60px]">
+                <div class="">
+                    <p class="flex items-center gap-[10px] mb-[16px]">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                            <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                        Застосунок зберігає стан фільтрів після перезавантаження сторінки.
+                    </p>
+                    <p class="flex items-center gap-[10px] mb-[16px]">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                            <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>Calendar використовує localStorage як сховище даних.
+                    </p>
+                    <p class="flex items-center gap-[10px] mb-[20px]">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                            <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#1C274C" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>Дає змогу зберігати, переглядати, редагувати та видаляти події.
+                    </p>
+
+                    <p class="mb-[10px] mt-auto font-[600] text-indigo-900">Користувач заходить у застосунок і бачить
+                        сторінку, яка
+                        складається
+                        з:</p>
+
+                    <ul class="list-disc pl-[20px] [&_li]:mb-[10px] mb-[20px]">
+                        <li>кнопки відкриття форми та створення події (лівий верхній кут);</li>
+                        <li>фільтру за датою. За замовчанням обрано поточний місяць;</li>
+                        <li>сітки календаря обраного у фільтрі місяця, яка складається з днів</li>
+                    </ul>
+                </div>
+                <img src="/src/img/main-screen.jpg" width="500" height="272" alt="Main screen calendar app"
+                    class="max-lg:m-auto object-contain">
+            </div>
+
+            <!-- Calendar cell -->
+            <div class="lg:flex lg:flex-row-reverse lg:gap-[20px] xl:gap-[30px] mb-[30px] lg:mb-[60px]">
+                <div class="lg:flex-1 lg:flex lg:flex-row-reverse lg:gap-[20px] xl:gap-[30px] justify-end mb-[16px]">
+                    <div class="sm:flex sm:gap-[20px] xl:gap-[30px] justify-center lg:justify-start">
+                        <div class="">
+                            <p class="font-[600] text-indigo-900 mb-[10px]">Комірка містить:</p>
+
+                            <ul class="list-disc pl-[20px] mb-[20px]">
+                                <li class="mb-[12px]">номер дня місяця</li>
+                                <li class="mb-[12px]">день тижня</li>
+                                <li class="mb-[12px]">список подій</li>
+                            </ul>
+                        </div>
+                        <div class="">
+                            <p class="font-[600] text-indigo-900 mb-[10px]">Кожен запис має:</p>
+
+                            <ul class="list-disc pl-[20px] mb-[20px]">
+                                <li class="mb-[12px]">title запису</li>
+                                <li class="mb-[12px]">кнопку редагування події
+                                    <span class="inline-block align-middle mx-[5px] text-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentcolor" viewBox="0 0 24 24">
+                                            <path fillRule="evenodd"
+                                                d="M20.848 1.879a3 3 0 0 0-4.243 0L2.447 16.036a3 3 0 0 0-.82 1.533l-.587 2.936a2 2 0 0 0 2.353 2.353l2.936-.587a3 3 0 0 0 1.533-.82L22.019 7.293a3 3 0 0 0 0-4.243zm-2.829 1.414a1 1 0 0 1 1.415 0l1.171 1.171a1 1 0 0 1 0 1.415L17.933 8.55l-2.585-2.586zm-4.086 4.086L3.862 17.45a1 1 0 0 0-.274.51l-.587 2.936 2.935-.587a1 1 0 0 0 .511-.274L16.52 9.964 13.933 7.38Z"
+                                                clipRule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                </li>
+                                <li class="mb-[12px]">кнопку видалення події
+                                    <span class="inline-block align-middle ml-[5px] text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="none"
+                                            viewBox="0 0 24 24">
+                                            <path stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M10 12v5m4-5v5M4 7h16M6 10v8a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-8M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2H9z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <img src="/src/img/cell.jpg" width="500" height="337" alt="Calendar cell"
+                            class="w-full max-lg:m-auto max-w-[500px] lg:max-w-[300px]">
+                        <p class="italic text-[14px] text-blue-500 max-lg:text-center">Комірка поточного дня, візуально
+                            виділена.</p>
+                    </div>
+                </div>
+
+                <div class="lg:flex-[0_0_265px]">
+                    <img src="/src/img/date-filter.jpg" width="265" height="77" alt="Date filter" class="max-lg:m-auto">
+                    <p class="italic text-[14px] text-blue-500 max-lg:text-center mb-[16px]">Місяці перемикаються
+                        кнопками</p>
+
+                    <img src="/src/img/date-filter-active.jpg" width="265" height="314" alt="Date filter active"
+                        class="max-lg:m-auto">
+                    <p class="italic text-[14px] text-blue-500 max-lg:text-center">Кнопка календаря відкриває
+                        date
+                        picker, де є
+                        можливість обрати рік і місяць.</p>
+                </div>
+            </div>
+
+            <!-- Create event -->
+            <section class="mb-[30px] lg:mb-[60px]">
+                <h2
+                    class="text-2xl lg:text-3xl text-indigo-900 uppercase font-[600] text-center mb-[24px] lg:mb-[32px]">
+                    Створення
+                    події</h2>
+                <div class="lg:flex lg:flex-row">
+                    <div class="">
+                        <p class="font-[600] text-indigo-900 mb-[10px]">Створити подію можна кліком на кнопку створення
+                            події (лівий верхній кут), або кліком на
+                            комірку
+                            календаря.
+                        </p>
+
+                        <p class="font-[600] text-indigo-900 mb-[10px]">Клік на створення події:</p>
+
+                        <ol class="list-decimal pl-[20px] mb-[24px] lg:mb-[32px]">
+                            <li class="mb-[12px]">
+                                Відкривається незаповнена форма, яка складається з трьох полів:
+                                <ul class="list-disc pl-[30px] pt-[12px]">
+                                    <li class="mb-[10px]">Title (required)</li>
+                                    <li class="mb-[10px]">Description</li>
+                                    <li class="mb-[10px]">Date</li>
+                                </ul>
+                            </li>
+                            <li class="mb-[12px]">Форму можливо закрити кліком у будь-яку зо поза формою або Esc.</li>
+                            <li class="mb-[12px]">Кнопка Save зберігає та закриває форму.</li>
+                            <li class="mb-[12px]">Кнопка неактивна, доки обовʼязкові поля не будуть заповнені.</li>
+                        </ol>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="/src/img/create-note.jpg" width="263" height="300">
+                        <p class="text-[.875rem] text-blue-500 max-w-[265px]">При кліку на комірку дня в календарі. Поле
+                            Date у
+                            заповнено автоматично.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calendar actions -->
+            <div class="lg:grid lg:grid-cols-3 gap-[30px]">
+
+                <section class="mb-[30px] lg:mb-[60px]">
+                    <h2
+                        class="text-2xl lg:text-3xl text-indigo-900 max-lg:text-center uppercase font-[600] mb-[24px] lg:mb-[32px]">
+                        Редагування
+                        подій</h2>
+
+                    <p class="font-[600] text-indigo-900 mb-[10px]">Клік на іконку редагування:</p>
+
+                    <ul class="list-disc pl-[20px] mb-[16px]">
+                        <li class="mb-[10px]">Відкривається заповнена форму в режимі редагування</li>
+                        <li class="mb-[10px]">Кнопка Save оновлює подію та закриває форму</li>
+                    </ul>
+
+                    <img src="/src/img/edit-note.jpg" width="360" height="348" class="m-auto">
+                </section>
+
+                <section class="mb-[30px] lg:mb-[60px]">
+                    <h2
+                        class="text-2xl lg:text-3xl text-indigo-900 max-lg:text-center uppercase font-[600] mb-[24px] lg:mb-[32px]">
+                        Перегляд
+                        подій</h2>
+                    <div class="">
+                        <p class="font-[600] text-indigo-900 mb-[10px] max-lg:text-center">Клік на title події відкриває
+                            моадльне вікно з
+                            деталями</p>
+                        <img src="/src/img/preview-note.jpg" width="360" height="242" class="m-auto">
+                    </div>
+                </section>
+
+                <section>
+                    <h2
+                        class="text-2xl lg:text-3xl text-indigo-900 max-lg:text-center uppercase font-[600] mb-[24px] lg:mb-[32px]">
+                        Видалення подій</h2>
+                    <p class="font-[600] text-indigo-900 max-lg:text-center">Клік на іконку видалення
+                        <span class="inline-block align-middle ml-[2px] mr-[2px] text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                    d="M10 12v5m4-5v5M4 7h16M6 10v8a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-8M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2H9z">
+                                </path>
+                            </svg>
+                        </span> видаляє подію з календаря.
+                    </p>
+                </section>
+
+            </div>
+        </article>
+    </main>
+</body>
+
+</html>
