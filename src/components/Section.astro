@@ -1,0 +1,38 @@
+---
+const { label, id, ...attrs } = Astro.props;
+---
+
+<section
+  class="accordion-item flex-1 cursor-pointer relative px-5"
+  data-accordion-item
+  {...attrs}
+>
+  <div
+    class="gradient-border scrollable lg:h-full flex flex-col items-center justify-center p-8 relative z-10"
+  >
+    <!-- TRIGGER (ARIA) -->
+    <h2 class="accordion-label">
+      <button
+        class="accordion-trigger block w-full h-full bg-transparent border-0 p-0 cursor-pointer"
+        aria-expanded="false"
+        aria-controls={`panel-${id}`}
+        id={`trigger-${id}`}
+      >
+        <span class="block text-4xl font-light text-white tracking-widest">
+          {label}
+        </span>
+      </button>
+    </h2>
+
+    <!-- CONTENT -->
+    <div
+      class="accordion-content absolute inset-0 py-8 lg:p-12 justify-between overflow-auto tracking-wider"
+      id={`panel-${id}`}
+      role="region"
+      aria-labelledby={`trigger-${id}`}
+      hidden
+    >
+      <slot />
+    </div>
+  </div>
+</section>

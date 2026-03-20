@@ -1,0 +1,21 @@
+---
+type BrandColor = "violet" | "green" | "blue";
+
+const { title, brandColor } = Astro.props as {
+  title: string;
+  brandColor: BrandColor;
+};
+
+const colorMap: Record<BrandColor, string> = {
+  violet: "text-violet-500",
+  green: "text-emerald-500",
+  blue: "text-blue-500",
+};
+---
+
+<h2
+  class={`flex items-center justify-center gap-4 text-3xl lg:text-5xl font-bold ${colorMap[brandColor]} mb-10 uppercase`}
+>
+  <slot />
+  {title}
+</h2>

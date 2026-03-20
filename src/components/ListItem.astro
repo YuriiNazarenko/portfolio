@@ -1,0 +1,35 @@
+---
+const {
+  bullet = "bar", // bar | dot | none | custom
+  color = "blue", // semantic color
+} = Astro.props;
+
+const colorMap = {
+  blue: "bg-blue-400 text-blue-400",
+  emerald: "bg-emerald-400 text-emerald-400",
+  violet: "bg-violet-400 text-violet-400",
+};
+
+const colors = colorMap[color] ?? colorMap.blue;
+---
+
+<li class="flex items-center gap-2 text-white tracking-wide">
+  {
+    bullet !== "none" && (
+      <span
+        class:list={[
+          "shrink-0",
+          bullet === "bar" && `w-4 h-1 rounded-full ${colors}`,
+          bullet === "dot" && `w-2 h-2 rounded-full ${colors}`,
+        ]}
+        aria-hidden="true"
+      >
+        {bullet === "custom" && <slot name="bullet" />}
+      </span>
+    )
+  }
+
+  <span class="flex-1 uppercase">
+    <slot />
+  </span>
+</li>

@@ -1,0 +1,8 @@
+---
+const { as = "ul" } = Astro.props;
+const Tag = as;
+---
+
+<Tag class="flex flex-col gap-4">
+  <slot />
+</Tag>

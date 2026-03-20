@@ -1,0 +1,26 @@
+---
+type BrandColor = "orange" | "green" | "blue" | "violet";
+
+const {
+  as: Tag = "button",
+  brandColor,
+  ...attrs
+} = Astro.props as {
+  as?: keyof HTMLElementTagNameMap;
+  brandColor: BrandColor;
+};
+
+const colorMap: Record<BrandColor, string> = {
+  orange: "orange-500",
+  violet: "violet-500",
+  green: "green-500",
+  blue: "blue-500",
+};
+---
+
+<Tag
+  {...attrs}
+  class=`flex mt-8 px-8 py-3 bg-transparent text-${colorMap[brandColor]} border border-${colorMap[brandColor]} font-semibold hover:bg-white transition-colors ease-in w-fit cursor-pointer`
+>
+  <slot />
+</Tag>

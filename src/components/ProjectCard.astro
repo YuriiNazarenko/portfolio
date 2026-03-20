@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import List from "./List.astro";
+import ListItem from "./ListItem.astro";
+const { title, screen, technologies, brandColor, visit, github } = Astro.props;
+import calendarImg from "../assets/img/calendar.jpg";
+import musicImg from "../assets/img/music.jpg";
+import positivusImg from "../assets/img/positivus.jpg";
+
+const imageMap = {
+  calendar: calendarImg,
+  music: musicImg,
+  positivus: positivusImg,
+};
+---
+
+<article class="flex flex-col items-center relative pb-12 last:pb-4">
+  <h3 class=`text-2xl py-2 text-violet-500 uppercase tracking-wider`>
+    {title}
+  </h3>
+
+  <Image
+    src={imageMap[screen]}
+    alt={title}
+    width="468"
+    height="250"
+    class="mb-6"
+  />
+
+  <div class="flex flex-col items-center">
+    <p class="text-xl pb-4 text-orange-50">Technologies used:</p>
+
+    <List>
+      {
+        technologies.map((tech) => (
+          <ListItem key={tech} color="violet">
+            {tech}
+          </ListItem>
+        ))
+      }
+    </List>
+  </div>
+
+  <div class="flex gap-3.75 pt-1.75 pl-1.75">
+    <Button as="a" brandColor={brandColor} href={visit}> Visit </Button>
+    <Button as="a" brandColor={brandColor} href={github}>Github</Button>
+  </div>
+</article>

@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+:root {
+  --scrollbar-size: 4px;
+
+  --scrollbar-track: rgba(255, 255, 255, 0.05);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.1);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.45);
+}
+
+/* =========================================================
+   ACCORDION LAYOUT
+========================================================= */
+
+.accordion-item {
+  transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================
+   STATES
+========================================================= */
+
+.accordion-item.is-hovered {
+  flex: 1.2;
+}
+
+.accordion-item.is-active {
+  flex: 4;
+}
+
+/* =========================================================
+   HOVER OVERLAY (GRADIENT)
+========================================================= */
+
+.accordion-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+}
+
+.accordion-item.is-hovered::before {
+  opacity: 1;
+}
+
+/* =========================================================
+   GRADIENT BORDER
+========================================================= */
+
+.gradient-border {
+  position: relative;
+  height: 100%;
+}
+
+.gradient-border::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  height: 2px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+.accordion-item:last-child .gradient-border::after {
+  display: none;
+}
+
+/* =========================================================
+   LABEL (VERTICAL)
+========================================================= */
+
+.accordion-label {
+  transition: opacity 0.4s ease;
+}
+
+.accordion-item.is-active .accordion-label {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.accordion-content {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  transition-delay: 0.1s;
+}
+
+.accordion-item.is-active .accordion-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   ICON SCALE
+========================================================= */
+
+.icon-wrapper {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.is-active .icon-wrapper {
+  transform: scale(1.1);
+}
+
+/* =========================================================
+   FLOATING ANIMATION
+========================================================= */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.accordion-content[hidden] {
+  display: none;
+}
+
+/* =========================================================
+    SCROLLBAR STYLES
+========================================================= */
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+/* width */
+.scrollable::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+/* track */
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* thumb */
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* hover */
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* corner */
+.scrollable::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@media (min-width: 64rem) {
+  .accordion-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .gradient-border::after {
+    left: auto;
+    right: -20px;
+    top: 0;
+
+    width: 2px;
+    height: auto;
+
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+  }
+}
